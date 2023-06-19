@@ -1,0 +1,65 @@
+/* Screen breakpoints are in Sass variables, as @media can't work with native css root vars */
+$screen-xs: 480px;
+$screen-sm: 648px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1280px;
+$screen-xxl: 1460px;
+
+:root,
+:host > * {
+  // Colours
+  --white: #fff;
+  --black: #000;
+  --gray-dark: #0c0c0c;
+  --gray: #26262b;
+  --gray-800: #313235;
+  --gray-600: #26262b;
+  --gray-500: #626463;
+  --gray-400: #9b9b9b;
+  --gray-300: #d0cece;
+  --gray-200: #e5e5e5;
+  --gray-100: #fbfbfc;
+  --offwhite: #f5f4f4;
+  --orange: #d14124;
+  --red: #7f05e3;
+  --red-dark: #460257;
+  --blue: #0f5d9e;
+  --green: #ffd000;
+  --green-dark: #978908;
+  --green-darker: #5d4d05;
+  --green-darkest: #453903;
+
+  // Fonts
+  --main-font: "museo-sans", ui-sans-serif, system-ui;
+  --secondary-font: "Montserrat", ui-sans-serif, system-ui;
+
+  // Borders
+  --border-sm: 0.4rem;
+  --border-md: 1rem;
+  --border-lg: 2rem;
+
+  // Container
+  --container: 1452px;
+  --bottom-bar-spacing: 8rem;
+  --container-spacing: 1rem;
+  --grid-template-columns: minmax(36%, 1fr) minmax(64%, 900px);
+  --product-section-spacing: 0;
+
+  // Table
+  --horizontal-sidebar-spacing: 1rem;
+
+  @media (min-width: $screen-md) {
+    --product-section-spacing: 2rem;
+    --bottom-bar-spacing: 6.25rem;
+  }
+
+  @media (min-width: $screen-lg) {
+    --horizontal-sidebar-spacing: 1.5rem;
+    --product-section-spacing: 3rem;
+  }
+
+  @media (min-width: $screen-xl) {
+    --horizontal-sidebar-spacing: 2rem;
+  }
+}

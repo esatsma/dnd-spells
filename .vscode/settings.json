@@ -1,0 +1,7 @@
+{
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.tabWidth": 2,
+  "editor.detectIndentation": false
+}

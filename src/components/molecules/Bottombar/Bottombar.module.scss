@@ -1,0 +1,121 @@
+@import "../../../scss/vars.scss";
+
+.bottombar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: var(--gray-800);
+  z-index: 1000;
+
+  :global {
+    .Button {
+      width: 100%;
+      justify-content: center;
+      padding: 0.8rem 1rem;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    background-color: var(--offwhite);
+
+    :global {
+      .Button {
+        width: auto;
+        margin-left: auto;
+      }
+    }
+
+    &.bottombar--transparent {
+      background: transparent;
+      pointer-events: none;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    :global {
+      .Button {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+
+  @media (min-width: $screen-md) {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    padding: 0;
+  }
+
+  > * {
+    padding: 0.4rem 0;
+
+    @media (min-width: $screen-md) {
+      padding: 1rem 1.5rem;
+    }
+
+    @media (min-width: $screen-lg) {
+      padding: 1rem 2rem;
+    }
+  }
+
+  .content__priceblock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    background-color: var(--gray-800);
+    pointer-events: all;
+  }
+}
+
+.content__subblock {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--gray-dark);
+  align-items: center;
+  flex: 1;
+  margin-bottom: 1rem;
+
+  @media (min-width: $screen-md) {
+    margin-bottom: 0;
+  }
+}
+
+.productsubtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.totalprice {
+  @media (min-width: $screen-md) {
+    margin-right: 1.5rem;
+  }
+
+  :last-child{
+      color: var(--white);
+      font-family: var(--secondary-font);
+      font-weight: 600;
+  }
+}
+
+.tooltip {
+  align-self: start;
+}
+
+.nextstep {
+  margin-bottom: 0;
+
+  @media (min-width: $screen-md) {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--red);
+  }
+}

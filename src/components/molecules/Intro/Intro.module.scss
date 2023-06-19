@@ -1,0 +1,29 @@
+@import "../../../scss/vars.scss";
+
+.container {
+  padding: 2rem 0;
+
+  @media (min-width: $screen-md) {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 2rem;
+  }
+
+  @media (min-width: $screen-lg) {
+    padding: 3rem 3rem 2rem;
+  }
+
+  @media (max-width: $screen-md) {
+    p,
+    li {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+details {
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+

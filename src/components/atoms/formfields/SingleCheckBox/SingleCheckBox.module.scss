@@ -1,0 +1,67 @@
+@import "../../../../scss/vars.scss";
+
+.singleCheckBox {
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    left: -99999px;
+
+    + span {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+      padding: 5px 0 5px 36px;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 2px;
+      }
+
+      &:before {
+        border: 1px solid #c8c8c8;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        background-color: var(--white);
+      }
+
+      &:after {
+        opacity: 0;
+        visibility: hidden;
+        background-color: #00ba78;
+        width: 14px;
+        height: 14px;
+        top: 10px;
+        left: 5px;
+        transition: all 100ms;
+      }
+    }
+
+    &:checked {
+      + span {
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    &:focus {
+      + span {
+        &:before {
+          border: 2px solid #00f;
+        }
+      }
+    }
+  }
+}

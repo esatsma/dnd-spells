@@ -1,0 +1,77 @@
+@import "../../../scss/vars.scss";
+
+.grid {
+  @media (max-width: $screen-md) {
+    grid-template-areas:
+      "intro"
+      "sidebar"
+      "product";
+  }
+}
+
+.heading {
+  padding: 4.5rem 2rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $screen-md) {
+    display: none;
+  }
+}
+
+.reset {
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  white-space: nowrap;
+  background: transparent;
+  padding: 0.15rem 0.5rem;
+  height: 1.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.2rem;
+
+  @media (max-width: $screen-md) {
+    margin-bottom: 1rem;
+    margin-left: auto;
+    float: right;
+  }
+}
+
+.toggle {
+  width: calc(100% - 4rem);
+  margin: 0 2rem;
+  padding: 1.3rem 0;
+  background-color: white;
+  border-bottom: 1px solid var(--gray-300);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: $screen-md) {
+    display: none;
+  }
+
+  svg {
+    margin-left: 0.5rem;
+  }
+}
+
+.results {
+  margin: 2rem 2rem;
+  color: var(--gray-400);
+  text-align: center;
+
+  @media (max-width: $screen-md) {
+    margin: 0.5rem 3rem;
+  }
+}
+
+.contact {
+  @media (max-width: $screen-md) {
+    display: none;
+  }
+}

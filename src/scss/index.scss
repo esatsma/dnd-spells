@@ -1,0 +1,84 @@
+@import "./fonts.scss";
+@import "./vars.scss";
+@import "./utils.scss";
+
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-smooth: always;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: inherit;
+}
+
+p {
+    font-family: var(--secondary-font);
+    color: var(--gray-600);
+    line-height: 1.4;
+}
+
+button {
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+summary {
+    display: block;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  summary:before {
+    content: "";
+    background: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgNDggNDgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ4IDQ4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGQ9Ik0xNS40LDQ0bC0yLjgtMi44TDI5LjgsMjRMMTIuNiw2LjhMMTUuNCw0bDIwLDIwTDE1LjQsNDR6Ii8+Cjwvc3ZnPgo=");
+    width: 0.85em;
+    height: 0.85em;
+    position: absolute;
+    top: 0.3rem;
+    left: 0;
+    transform: rotate(0);
+    transform-origin: center;
+    transition: 0.25s transform ease;
+  }
+
+  details[open] > summary:before {
+    transform: rotate(90deg);
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }

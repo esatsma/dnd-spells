@@ -1,0 +1,50 @@
+@import "../../../scss/vars.scss";
+
+.filter {
+  border-top: 1px solid var(--gray-300);
+  padding: 1rem var(--horizontal-sidebar-spacing) 1rem;
+
+  @media (min-width: $screen-xl) {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem var(--horizontal-sidebar-spacing) 1rem;
+  }
+
+  @media (max-width: $screen-md) {
+    margin: 1.5rem 2rem;
+
+    &:first-of-type {
+      border: none;
+    }
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: $screen-xl) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+  min-width: 10rem;
+  padding-right: 2rem;
+  white-space: nowrap;
+
+  @media (min-width: $screen-xl) {
+    display: block;
+  }
+
+  @media (max-width: $screen-md) {
+    flex-direction: row;
+    padding-right: 0;
+    min-width: unset;
+  }
+}

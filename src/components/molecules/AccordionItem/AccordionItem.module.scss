@@ -1,0 +1,46 @@
+@import "../../../scss/vars.scss";
+
+.accordionItem {
+  background: var(--offwhite);
+
+  i {
+    transition: 0.25s transform ease;
+  }
+
+  &:last-child {
+    .accordionButton {
+      border-bottom: 1px solid var(--gray-200);
+    }
+  }
+}
+
+.accordionItem--open {
+  padding-bottom: 1.5rem;
+
+  .accordionButton {
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  i {
+    transform: rotate(180deg);
+  }
+}
+
+.accordionButton {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem var(--horizontal-sidebar-spacing);
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+
+  @media (min-width: $screen-md) {
+    padding: 1.5rem var(--horizontal-sidebar-spacing);
+  }
+}
+
+.accordionTitle {
+  font-weight: 600;
+  font-family: var(--secondary-font);
+}

@@ -1,0 +1,104 @@
+@import "../../../../../scss/vars.scss";
+
+.options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.option {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  min-width: 4rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+
+  input {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &:checked {
+      ~ .content {
+        box-shadow: 0 0 0 3px var(--red);
+      }
+    }
+
+    &:disabled {
+      ~ .content {
+        cursor: default;
+        opacity: 0.8;
+        color: var(--gray-300);
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: var(--border-sm);
+  text-align: center;
+  padding: 0.5rem;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+  transition: all 100ms;
+
+  @media (max-width: var(--screen-md)) {
+    background-color: var(--gray-200);
+  }
+}
+
+.resetInput {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  top: -0.75rem;
+  right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 100%;
+  font-size: 1rem;
+
+  svg {
+    position: relative;
+    top: 0.3rem;
+  }
+}
+
+.icon {
+  width: 80px;
+
+  @media (max-width: $screen-md) {
+    background: var(--offwhite);
+  }
+}
+
+.icon {
+  img {
+    width: 40px;
+    max-width: 80px;
+    max-height: 50px;
+    margin: 0 auto;
+  }
+}
+
+.label {
+  font-size: 0.8rem;
+}
+
+.label__icon {
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}

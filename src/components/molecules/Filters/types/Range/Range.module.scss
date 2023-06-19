@@ -1,0 +1,14 @@
+@import "../../../../../scss/vars.scss";
+
+.container {
+  height: 1rem;
+  transform: translateY(0.5rem);
+  padding: 2rem 1rem 3rem;
+
+  @media (min-width: $screen-xl) {
+    width: calc(100% - 11rem);
+    padding-right: 1.25rem;
+    padding-top: 1rem;
+    padding-left: 1.25rem;
+  }
+}

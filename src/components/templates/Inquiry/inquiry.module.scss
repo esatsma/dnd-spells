@@ -1,0 +1,98 @@
+@import "../../../scss/vars.scss";
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+
+  @media (min-width: $screen-md) {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    grid-template-rows: minmax(100px, max-content) 1fr;
+    grid-template-areas:
+      "sidebar intro"
+      "sidebar  product";
+
+    > *:nth-child(1) {
+      grid-area: sidebar;
+    }
+
+    > *:nth-child(2) {
+      grid-area: intro;
+    }
+
+    > *:nth-child(3) {
+      grid-area: product;
+    }
+  }
+}
+
+.filters {
+  @media (min-width: $screen-md) {
+    padding-bottom: var(--bottom-bar-spacing);
+  }
+}
+
+.confirmationcontainer {
+  @media (max-width: $screen-md) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.inquiry {
+  @media (min-width: $screen-md) {
+    padding-top: 5rem;
+  }
+}
+
+.confirmationSidebar {
+  @media (min-width: $screen-md) {
+    display: flex;
+    padding: 5rem 2rem;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: (--offwhite);
+  }
+}
+
+.contact {
+  @media (max-width: $screen-md) {
+    display: none;
+  }
+}
+
+.button {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--red);
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  text-decoration: none;
+  border-style: none;
+  border-radius: var(--border-sm);
+  border-color: var(--red);
+  color: var(--white);
+  padding: 0.8rem 1rem;
+  line-height: 1.2;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 100ms;
+
+  @media (min-width: $screen-md) {
+    padding: 1rem 1.5rem;
+  }
+
+  :global {
+    .icon {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: var(--red-dark);
+  }
+}
