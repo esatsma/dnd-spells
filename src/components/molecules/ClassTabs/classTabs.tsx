@@ -24,6 +24,7 @@ export const ClassTabs = ({onChange, classes, value}: classTabsProps) => {
 
   return (
     <Tabs value={value} onChange={handleChange} aria-label="classes">
+        <Tab label="All spells" {...a11yProps('all')} key="all" />
        { classes?.map((classdata) => (
              <Tab
              label={classdata.name}
