@@ -13,7 +13,7 @@ export const SpellDetailCard = ({details} : {details?: getSpellDetailsResponse})
           {details?.name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-         {details?.level}-level {details?.school.name}
+         {details?.level}
         </Typography>
         <Grid container>
 
