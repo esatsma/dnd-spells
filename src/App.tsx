@@ -2,7 +2,6 @@ import { SyntheticEvent, useState } from "react";
 import { SpellListItem } from "./components/molecules/spellListItem/spellListItem";
 import { useGranularEffect } from "./hooks/useGranularEffect";
 import "./scss/index.scss";
-import "./services/i18n";
 import {
   getAllClasses,
   getAllSpells,
@@ -41,9 +40,7 @@ function App() {
     [abortController, isLoading]
   );
 
-  const handleChange = (
-    newValue: number
-  ) => {
+  const handleChange = (newValue: number) => {
     setValue(newValue);
     console.log("triggered");
     getClassSpells(classList![newValue - 1].index).then((response) => {
@@ -60,19 +57,21 @@ function App() {
   return (
     <Box sx={{ width: "80%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <ClassTabs
-          value={value}
-          classes={classList}
-          onChange={handleChange}
-        />
+        <ClassTabs value={value} classes={classList} onChange={handleChange} />
       </Box>
       <Grid container spacing={2}>
         <Grid item md={4}>
           <List>
-            {spellList?.length === 0 ? "This class has no spells" : spellList?.map((spell) => (
-                   <SpellListItem spell={spell} onClick={() => handleListItemClick(spell.index)} key={spell.index}/>
+            {spellList?.length === 0
+              ? "This class has no spells"
+              : spellList?.map((spell) => (
+                  <SpellListItem
+                    spell={spell}
+                    onClick={() => handleListItemClick(spell.index)}
+                    key={spell.index}
+                  />
                 ))}
-            </List>
+          </List>
         </Grid>
         <Grid item md={8}>
           {spellDetails ? <SpellDetailCard details={spellDetails} /> : <></>}
