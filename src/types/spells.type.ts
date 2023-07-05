@@ -1,23 +1,23 @@
 import { AreaOfEffect, SpellComponent } from "../enums/Spell.enum"
 
-export type GetSpellsResponse = {
+export type SpellsApiResponse = {
     count: number,
-    results: BasicData[]
+    results: BasicApiResponseObject[]
 }
 
-export type BasicData = {
+export type BasicApiResponseObject = {
     index: string        
     name: string       
     url: string     
 }
 
 
-export type GetClassResponse = {
+export type fetchClassResponse = {
     count: number,
-    results: BasicData[]
+    results: BasicApiResponseObject[]
 }
 
-export type getSpellDetailsResponse = {
+export type fetchSpellDetailsResponse = {
     index: string,
     name: string,
     url: string,
@@ -40,9 +40,9 @@ export type getSpellDetailsResponse = {
         [Key: string]: {
             [number: string]: any
         },
-        damage_type: BasicData,
+        damage_type: BasicApiResponseObject,
     }
-    school:BasicData,
-    classes: BasicData[],
-    subclasses: BasicData[]
+    school:BasicApiResponseObject,
+    classes: BasicApiResponseObject[],
+    subclasses: BasicApiResponseObject[]
 }

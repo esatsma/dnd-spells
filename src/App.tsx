@@ -1,84 +1,39 @@
-import { SyntheticEvent, useState } from "react";
-import { SpellListItem } from "./components/molecules/spellListItem/spellListItem";
-import { useGranularEffect } from "./hooks/useGranularEffect";
-import "./scss/index.scss";
-import {
-  getAllClasses,
-  getAllSpells,
-  getClassSpells,
-  getSpellDetails,
-} from "./services/spellService";
-import { BasicData, getSpellDetailsResponse } from "./types/spells.type";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
-import { ClassTabs } from "./components/molecules/ClassTabs/classTabs";
-import { SpellDetailCard } from "./components/molecules/SpellDetailsCard/spellDetailsCard";
+import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ClassList from "./components/templates/ClassList/ClassList";
+import SpellList from "./components/templates/SpellList/SpellList";
+import { SpellDetailCard } from "./components/molecules/SpellDetailCard/SpellDetailCard";
 
-function App() {
-  const [isLoading, setIsLoading] = useState<Boolean>();
-  const [abortController, setAbortController] =
-    useState<AbortController | null>();
-  const [spellList, setSpellList] = useState<BasicData[]>();
-  const [classList, setClassList] = useState<BasicData[]>();
-  const [spellDetails, setSpellDetails] = useState<getSpellDetailsResponse>();
-  const [value, setValue] = useState(0);
-
-  useGranularEffect(
-    () => {
-      setIsLoading(true);
-      getAllSpells().then((response) => {
-        setSpellList(response?.results);
-      });
-
-      getAllClasses().then((response) => {
-        setClassList(response?.results);
-      });
-      setIsLoading(false);
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
     },
-    [],
-    [abortController, isLoading]
-  );
+  },
+});
 
-  const handleChange = (newValue: number) => {
-    setValue(newValue);
-    console.log("triggered");
-    getClassSpells(classList![newValue - 1].index).then((response) => {
-      setSpellList(response?.results);
-    });
-  };
-
-  const handleListItemClick = (spellIndex: string) => {
-    getSpellDetails(spellIndex).then((response) => {
-      setSpellDetails(response);
-    });
-  };
+const App = () => {
+  const adoptedPet = useState(null);
 
   return (
-    <Box sx={{ width: "80%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <ClassTabs value={value} classes={classList} onChange={handleChange} />
-      </Box>
-      <Grid container spacing={2}>
-        <Grid item md={4}>
-          <List>
-            {spellList?.length === 0
-              ? "This class has no spells"
-              : spellList?.map((spell) => (
-                  <SpellListItem
-                    spell={spell}
-                    onClick={() => handleListItemClick(spell.index)}
-                    key={spell.index}
-                  />
-                ))}
-          </List>
-        </Grid>
-        <Grid item md={8}>
-          {spellDetails ? <SpellDetailCard details={spellDetails} /> : <></>}
-        </Grid>
-      </Grid>
-    </Box>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<ClassList />} />
+          <Route path="/spells/:dndClass" element={<SpellList />} />
+          <Route path="spells/details/:id" element={<SpellDetailCard />} />
+        </Routes>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
-}
+};
 
-export default App;
+const container = document.getElementById("root");
+if (!container) {
+  throw new Error("Where's my container?");
+}
+const root = createRoot(container);
+root.render(<App />);
